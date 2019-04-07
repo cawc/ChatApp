@@ -16,7 +16,7 @@
 <c:if test="${errors.size()>0 }">
 	<div class="danger">
 		<ul>
-			<c:forEach var="error" items="${errors }">
+			<c:forEach var="error" items="${errors}">
 				<li>${error }</li>
 			</c:forEach>
 		</ul>
@@ -24,6 +24,8 @@
 </c:if> <c:choose>
 	<c:when test="${user!=null}">
 		<p>Welcome ${user.getFirstName()}!</p>
+		<p><a href="Controller?action=Chat">Chat here</a></p>
+		<p><a href="Controller?action=Blog">Visit the blog here</a></p>
 		<form method="post" action="Controller?action=LogOut">
 			<p>
 				<input type="submit" id="logoutbutton" value="Log Out">

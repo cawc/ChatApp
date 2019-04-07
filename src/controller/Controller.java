@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import domain.PersonService;
 
 @WebServlet("/Controller")
@@ -42,7 +43,13 @@ public class Controller extends HttpServlet {
         	RequestHandler handler;
         	try {
         		handler = controllerFactory.getController(action, model);
-				destination = handler.handleRequest(request, response);
+        		if (handler instanceof AsyncRequestHandler) {
+					response.setContentType("text/json");
+					response.getWriter().write(handler.handleRequest(request,response));
+					return;
+				} else {
+					destination = handler.handleRequest(request, response);
+				}
         	} 
         	catch (NotAuthorizedException exc) {
         		List<String> errors = new ArrayList<String>();

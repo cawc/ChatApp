@@ -15,6 +15,7 @@ public class PersonRepositoryStub implements PersonRepository {
 		Person administrator = new Person("bib@ucll.be", "t", "Bib", "Liothekaris", Role.BIB);
 		add(administrator);
 		Person jan = new Person("jan@ucll.be", "t", "Jan", "Janssens", Role.LID);
+		jan.addFriend(administrator);
 		add(jan);
 		Person an = new Person("an@ucll.be", "t", "An", "Cornelissen", Role.LID);
 		add(an);

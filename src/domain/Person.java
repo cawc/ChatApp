@@ -5,18 +5,27 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Person {
 
 	private String userId;
+
+    @JsonIgnore
 	private String password;
+    @JsonIgnore
 	private String salt;
 	private String firstName;
 	private String lastName;
+    @JsonIgnore
 	private Role role;
+	private String status;
+    @JsonIgnore
+	private List<Person> friends;
 
 	public Person(String userId, String password, String firstName,
 			String lastName,Role role) {
@@ -25,6 +34,8 @@ public class Person {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
+		setStatus("Offline");
+		friends = new ArrayList<>();
 	}
 
 	public Person(String userId, String password, String salt,
@@ -35,7 +46,8 @@ public class Person {
 		setFirstName(firstName);
 		setLastName(lastName);
 		setRole(role);
-	}
+        setStatus("Offline");
+    }
 
 	public Person() {
 	}
@@ -147,6 +159,30 @@ public class Person {
 			throw new IllegalArgumentException("No last name given");
 		}
 		this.lastName = lastName;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void addFriend(Person friend) {
+		if(!friends.contains(friend)) {
+			friends.add(friend);
+		}
+	}
+
+	public void removeFriend(Person notFriend) {
+		if (friends.contains(notFriend)) {
+			friends.remove(notFriend);
+		}
+	}
+
+	public List<Person> getFriends() {
+		return friends;
 	}
 
 }
