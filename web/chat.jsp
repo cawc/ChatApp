@@ -15,13 +15,15 @@
 <main>
     <p>Welcome, ${user.firstName}!</p>
     <article>
-        Your friends
+        <div id="friendToggle">Toggle friendslist</div>
         <table id="friendList">
             <tr>
                 <th>Name</th><th>Status</th>
             </tr>
 
         </table>
+        <script type="text/javascript" src="js/friendlistToggler.js"></script>
+
         <p>
             Userid: <input type="text" name="status" id="addFriendInput">
             <input type="button" id="addFriendButton" value="Add friend"/>
@@ -37,6 +39,8 @@
             <input type="button" id="setStatusButton" value="Update status"/>
         </p>
     </article>
+    <script type="text/javascript" src="js/status.js"></script>
+    <script type="text/javascript" src="js/friends.js"></script>
 </main>
 
 <jsp:include page="footer.jsp">
