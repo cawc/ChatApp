@@ -29,7 +29,10 @@ function generateFriendList(friends) {
         let row = friendList.insertRow();
         let nameCell = row.insertCell(0);
         let statusCell = row.insertCell(1);
-        nameCell.appendChild(document.createTextNode(fr.name));
+        let chatLink = document.createElement("a");
+        chatLink.appendChild(document.createTextNode(fr.name));
+        chatLink.setAttribute("href", "Controller?action=ChatRoom&uid="+fr.userId);
+        nameCell.appendChild(chatLink);
         statusCell.appendChild(document.createTextNode(fr.status));
     });
 

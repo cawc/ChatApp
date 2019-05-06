@@ -1,12 +1,17 @@
 package domain;
 
 import java.util.List;
+import java.util.Set;
 
+import controller.ChatSession;
+import db.ChatSessionRepository;
+import db.ChatSessionRepositoryInMemory;
 import db.PersonRepository;
 import db.PersonRepositoryStub;
 
 public class PersonService {
 	private PersonRepository personRepository = new PersonRepositoryStub();
+	private ChatSessionRepository chatSessionRepository = new ChatSessionRepositoryInMemory();
 
 	public PersonService(){
 	}
@@ -37,5 +42,9 @@ public class PersonService {
 
 	private PersonRepository getPersonRepository() {
 		return personRepository;
+	}
+
+	public ChatSession getChatSession(Set<Person> people) {
+		return chatSessionRepository.getChatSession(people);
 	}
 }

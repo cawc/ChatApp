@@ -51,6 +51,7 @@ public class GetFriends extends AsyncRequestHandler {
                 jsonGenerator.writeStartObject();
                 jsonGenerator.writeStringField("status", person.getStatus());
                 jsonGenerator.writeStringField("name", person.getFirstName());
+                jsonGenerator.writeStringField("userId", person.getUserId());
                 jsonGenerator.writeEndObject();
             } catch (IOException e) {
                 throw new IllegalArgumentException(e);
