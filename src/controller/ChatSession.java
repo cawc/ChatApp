@@ -27,7 +27,7 @@ public class ChatSession {
         this.participants = participants;
     }
 
-    private Set<Person> getParticipants() {
+    public Set<Person> getParticipants() {
         return participants;
     }
 

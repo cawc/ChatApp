@@ -47,9 +47,13 @@ public class Person {
 		setLastName(lastName);
 		setRole(role);
         setStatus("Offline");
+		friends = new ArrayList<>();
     }
 
 	public Person() {
+		setRole(Role.LID);
+		setStatus("Offline");
+		friends = new ArrayList<>();
 	}
 
 	public Role getRole() {
