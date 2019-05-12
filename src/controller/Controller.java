@@ -37,14 +37,14 @@ public class Controller extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
+		String action = request.getParameter("action");
         String destination = "index.jsp";
         if (action != null) {
         	RequestHandler handler;
         	try {
         		handler = controllerFactory.getController(action, model);
         		if (handler instanceof AsyncRequestHandler) {
-					response.setContentType("text/json");
+        			response.setContentType("text/json");
 					response.getWriter().write(handler.handleRequest(request,response));
 					return;
 				} else {
