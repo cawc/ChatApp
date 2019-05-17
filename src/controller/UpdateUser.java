@@ -33,7 +33,6 @@ public class UpdateUser extends AsyncRequestHandler {
         }
 
         Person userToUpdate = getPersonService().getPerson(jsonMap.get("userId"));
-        System.out.println(jsonMap.get("firstName"));
         if(userToUpdate != null) {
             userToUpdate.setFirstName(jsonMap.get("firstName"));
             userToUpdate.setLastName(jsonMap.get("lastName"));
